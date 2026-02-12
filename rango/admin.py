@@ -16,7 +16,8 @@ class PageAdmin(admin.ModelAdmin):
         ('Information', {'fields': ['category', 'url']}),
         ('Social Features', {'fields': ['views']})
     ]
-    list_display = ('title', 'category', 'url', 'views')
+    list_display = ('title', 'category', 'url')
+    list_filter = ['category']
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Page, PageAdmin) # category, title, url, views
