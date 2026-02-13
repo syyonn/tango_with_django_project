@@ -28,9 +28,10 @@ def about(request):
     print(request.method)
     print(request.user)
     context_dict = {'boldmessage': 'This tutorial has been put together by Syon.'}
-    if request.session.test_cookie_worked():
-        print("TEST COOKIE WORKED!")
-        request.session.delete_test_cookie()
+    
+    visitor_cookie_handler(request)
+    context_dict['visits'] = request.session['visits']
+
     return render(request, 'rango/about.html', context=context_dict)
 
 @login_required
