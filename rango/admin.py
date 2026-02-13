@@ -4,8 +4,9 @@ from rango.models import Category, Page
 # Register your models here.
 
 class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('name',)}
     fieldsets = [
-        (None,              {'fields': ['name']}),
+        (None,              {'fields': ['name', 'slug']}),
         ('Social Features', {'fields': ['views', 'likes']})
     ]
     list_display = ('name', 'views', 'likes')
